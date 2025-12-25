@@ -11,10 +11,19 @@ class Settings(BaseSettings):
 
     @property
     def DATABASE_URL(self) -> str:
-        return f"postgresql+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}@{self.DATABASE_HOST}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
+        return (
+            f"postgresql+asyncpg://"
+            f"{self.DATABASE_USER}:"
+            f"{self.DATABASE_PASSWORD}@"
+            f"{self.DATABASE_HOST}:"
+            f"{self.DATABASE_PORT}/"
+            f"{self.DATABASE_NAME}"
+        )
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=True,
+    )
 
 
 settings = Settings()
