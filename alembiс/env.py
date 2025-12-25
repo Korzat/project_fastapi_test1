@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 # 🔹 Добавляем корень проекта в PYTHONPATH
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 
-from app.db.models.base import Base  # noqa
+from app.models import Base  # noqa
 
 # 🔹 Alembic config
 config = context.config
